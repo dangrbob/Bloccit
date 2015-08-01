@@ -8,6 +8,17 @@ require 'faker'
   )
 end
 
+#Create Ads
+count=0
+25.times do 
+  count+=1
+  Advertisement.create!(
+    title: "Advertisement #{count}",
+    copy: Faker::Lorem.paragraph,
+    price: rand(100)
+  ) 
+end
+
 posts = Post.all
 
 #Create Comments
@@ -20,5 +31,6 @@ end
 
 puts "File seeded"
 puts "#{Post.count} posts created"
+puts "#{Advertisement.count} ads created"
 puts "#{Comment.count} comments created"
 
