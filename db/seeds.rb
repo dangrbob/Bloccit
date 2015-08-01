@@ -9,6 +9,13 @@ require 'faker'
 end
 
 posts = Post.all
+titles = Post.pluck(:title)
+
+#Create Unique
+if !titles.include?("Uniquely Titled 2")
+  Post.create!(title: "Uniquely Titled 2", body: "Unique Body")
+end  
+
 
 #Create Comments
 50.times do
