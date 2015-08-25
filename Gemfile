@@ -51,4 +51,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'bootstrap-sass'
 gem 'faker'
 gem 'devise'
+  gem 'pundit'
 gem 'figaro', '1.0'
