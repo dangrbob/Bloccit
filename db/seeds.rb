@@ -13,6 +13,16 @@ end
 
 users = User.all
 
+#Create Summaries
+15.times do
+  Postsummary.create!(
+    curtpost:     Faker::Lorem.sentence,
+  )
+end
+
+postsummaries = Postsummary.all
+
+
 #Create Topics
 15.times do
   Topic.create!(
@@ -28,6 +38,7 @@ topics = Topic.all
   Post.create!(
     user: users.sample,
     topic: topics.sample,
+    postsummary: postsummaries.sample,
     title: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraph
   )

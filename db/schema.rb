@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827141453) do
+ActiveRecord::Schema.define(version: 20150829192850) do
 
   create_table "advertisements", force: true do |t|
     t.string   "title"
@@ -46,15 +46,31 @@ ActiveRecord::Schema.define(version: 20150827141453) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.integer  "summmary_id"
+    t.integer  "sum_id"
   end
 
+  add_index "posts", ["sum_id"], name: "index_posts_on_sum_id"
+  add_index "posts", ["summmary_id"], name: "index_posts_on_summmary_id"
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "postsummaries", force: true do |t|
+    t.text     "curtpost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "questions", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.boolean  "resolved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "summmaries", force: true do |t|
+    t.text     "shortsum"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
