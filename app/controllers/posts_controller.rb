@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
   def index
+    @user = current_user    
     @posts = policy_scope(Post)
+    authorize @posts
   end
 
   def show
     @post = Post.find(params[:id])
+    
+    authorize @post
   end
 
   def new

@@ -14,18 +14,16 @@ class PostPolicy < ApplicationPolicy
 
     def resolve
       raise Pundit::NotAuthorizedError, "Must be logged in" unless user
-      if user.admin?
+      if user.admin? || user.moderator?
         scope.all
-      elsif user.moderator?
-        scope.all  
       else
-        scope.where(user: @current_user)
+        scope.where(:user => @user)
       end
     end
   end
 
   def update?
-    user.admin? or (record.user == @current_user)
+    user.admin? or scope.where(:user => @user)
   end
 
   
