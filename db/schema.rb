@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907221255) do
-
+ActiveRecord::Schema.define(version: 20150913193931) do
 
   create_table "advertisements", force: true do |t|
     t.string   "title"
@@ -51,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150907221255) do
     t.integer  "topic_id"
     t.integer  "summmary_id"
     t.integer  "sum_id"
+    t.string   "image"
   end
 
   add_index "posts", ["sum_id"], name: "index_posts_on_sum_id"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150907221255) do
     t.datetime "updated_at",                          null: false
     t.string   "role"
     t.string   "avatar"
+    t.string   "postpic"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
