@@ -3,21 +3,16 @@
 <div class="row">
   <div class="col-md-8">
     <p><%= markdown_to_html @post.body %></p>
+    <h3>Comments</h3>
+       
+          <%=render @comments %>   
+          <%= render partial: 'comments/form', locals: {topic:@topic, post:@post, comment:@comment} %>      
+        
   </div>
   <div class="col-md-4">  
     <% if policy(@post).edit? %>
       <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
     <% end %>
-    <% @comments.each do |comment| %>
-      <div class="media">
-        <div class="media-body">
-          <p><%= markdown_to_html @comment.body %></p>
-          <small>
-            submitted <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.name %><br>
-              
-          </small>
-        </div>
-      </div>
-    <% end %>
+    
   </div>
 </div>
