@@ -54,11 +54,9 @@ gem 'devise'
   gem 'pundit'
 gem 'figaro', '1.0'
 gem 'redcarpet'
-<<<<<<< HEAD
 gem 'will_paginate', '~> 3.0.5'
-=======
 gem 'carrierwave'
 gem 'mini_magick', '~> 3.5.0'
 gem 'fog'
 gem 'carrierwave-aws'
->>>>>>> checkpoint-44-images
+
