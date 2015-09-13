@@ -3,6 +3,7 @@ def create
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
+    authorize @comment
     @comment.user = current_user
     if @comment.save
       flash[:notice] = "Comment was saved."
@@ -16,7 +17,7 @@ def create
   private
 
   def comment_params
-    params.require(:commetn).permit(:body)
+    params.require(:comment).permit(:body)
   end
   
 end
