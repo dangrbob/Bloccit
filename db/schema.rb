@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150907221255) do
 
+
   create_table "advertisements", force: true do |t|
     t.string   "title"
     t.text     "copy"
