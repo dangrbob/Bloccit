@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(version: 20150913193931) do
     t.datetime "updated_at",                          null: false
     t.string   "role"
     t.string   "avatar"
-    t.string   "postpic"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

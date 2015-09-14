@@ -4,7 +4,7 @@ def create
     @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
     authorize @comment
-    @comment.user = current_user
+    @comment.user_id = current_user.id
     if @comment.save
       flash[:notice] = "Comment was saved."
       redirect_to [@topic, @post]
@@ -13,6 +13,22 @@ def create
       redirect_to [@topic, @post]
     end
   end
+
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+
+    authorize @comment
+    if @comment.destroy
+      flash[:notice] = "Comment was removed."
+      redirect_to [@topic, @post]
+    else
+      flash[:notice] = "Comment couldn't be deleted. Please try again."
+      redirect_to [@topic, @post]
+    end
+  end      
+
 
   private
 
